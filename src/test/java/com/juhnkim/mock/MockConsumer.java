@@ -1,6 +1,7 @@
 package com.juhnkim.mock;
 
 import com.juhnkim.Consumer;
+import com.juhnkim.Item;
 
 public class MockConsumer implements Consumer {
 
@@ -10,8 +11,8 @@ public class MockConsumer implements Consumer {
         this.mockBuffer = mockBuffer;
     }
 
-    public void removeItem()  {
-        mockBuffer.remove();
+    public Item removeItem()  {
+        return mockBuffer.remove();
     }
 
     @Override

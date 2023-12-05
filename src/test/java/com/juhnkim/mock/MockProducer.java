@@ -1,5 +1,6 @@
 package com.juhnkim.mock;
 
+import com.juhnkim.Item;
 import com.juhnkim.Producer;
 
 public class MockProducer implements Producer {
@@ -10,8 +11,8 @@ public class MockProducer implements Producer {
         this.mockBuffer = mockBuffer;
     }
 
-    public void add(MockItem mockItem) {
-        mockBuffer.add(mockItem);
+    public boolean add(MockItem mockItem) {
+        return mockBuffer.add(mockItem);
     }
 
     @Override
