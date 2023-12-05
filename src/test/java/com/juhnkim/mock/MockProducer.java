@@ -10,9 +10,8 @@ public class MockProducer implements Producer {
         this.mockBuffer = mockBuffer;
     }
 
-    public boolean add(MockItem mockItem) {
+    public void add(MockItem mockItem) {
         mockBuffer.add(mockItem);
-        return true;
     }
 
     @Override
