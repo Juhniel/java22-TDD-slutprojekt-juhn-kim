@@ -6,7 +6,6 @@ package com.juhnkim;
  * stopRunning stops Consumer
  */
 public interface Consumer {
-
-    public void run();
+    public void run() throws InterruptedException;
     public void stopRunning();
 }

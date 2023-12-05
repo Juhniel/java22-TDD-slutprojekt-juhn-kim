@@ -5,8 +5,7 @@ import java.util.Queue;
 
 public class Buffer {
 
-    protected Queue<Item> buffer = new LinkedList<Item>();
-
+    protected Queue<Item> buffer = new LinkedList<>();
     public synchronized boolean add(Item item) {
         buffer.add(item);
         System.out.println(buffer);
@@ -25,4 +24,5 @@ public class Buffer {
         Item item = buffer.remove();
         return item;
     }
+
 }

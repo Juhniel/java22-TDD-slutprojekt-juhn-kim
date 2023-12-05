@@ -5,7 +5,6 @@ package com.juhnkim;
  * stopRunning stops Producer
  */
 public interface Producer{
-
     public void run();
     public void stopRunning();
 }
