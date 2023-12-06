@@ -28,9 +28,8 @@ or not after certain operations).
 ## The tests covers the following features of the 'Item' class:
 
 ### Constructor Tests
-Handling Different Input Cases: Ensures the constructor correctly handles various input strings, including null, empty string, upper case, and mixed case, converting them to lowercase as required.
+**Handling Different Input Cases:** Ensures the constructor correctly handles various input strings, including null, empty string, upper case, and mixed case, converting them to lowercase as required.
 Getters Tests
-
 **ID Retrieval:** Tests that the getId() method returns the correct, lowercased ID of the item.
 **Important Tests**
 **Set ID:** Verifies that the setId() method updates the item's ID correctly and converts it to lowercase.
