@@ -10,19 +10,25 @@ A consumer consumes the "item" from the buffer.
 * Getter and Setter verification 
 * Exception Handling
 * Null Value testing
-* Mock
-* Helper Mock classes
+* Mocking
+* Helper classes
+* TDD Principles
 
 ## The tests covers the following features of the 'Buffer' class:
 ### Constructor Tests
 There aren't specific constructor tests for the Buffer class as it mainly involves initializing a
 Queue<Item> without specific parameters. However, the effective functioning of the constructor is
-implicitly tested through the behavior of the add and remove methods.
+implicitly tested through the behavior of the add and remove methods from the Producer and Consumer.
 
-### Getters Tests
-Getters for the Buffer class are not explicitly mentioned,
-but the state of the buffer is indirectly checked in various tests (e.g., ensuring the buffer is empty
-or not after certain operations). 
+**Adding Items:** Tests ensure that items can be successfully added to the buffer.
+
+**Removing Items:** Tests verify that items can be removed correctly, following the expected behavior.
+
+**Handling Empty Buffer:** Tests confirm that the remove() method behaves as expected when the buffer is empty, including waiting behavior and exception handling.
+
+**Thread Safety:** Multi-threaded tests check the thread safety and synchronization aspects of the buffer, particularly important in a producer-consumer context.
+
+**FIFO Behavior:** This is crucial as it ensures that items are processed in the order they are added, a fundamental feature for many buffering mechanisms.
 
 
 ## The tests covers the following features of the 'Item' class:
@@ -31,7 +37,7 @@ or not after certain operations).
 **Handling Different Input Cases:** Ensures the constructor correctly handles various input strings, including null, empty string, upper case, and mixed case, converting them to lowercase as required.
 Getters Tests
 
-**ID Retrieval:** Tests that the getId() method returns the correct, lowercased ID of the item.
+**ID Retrieval:** Tests that the getId() method returns the correct, lowercase ID of the item.
 
 **Set ID:** Verifies that the setId() method updates the item's ID correctly and converts it to lowercase.
 
@@ -39,14 +45,8 @@ Getters Tests
 
 **Empty String Handling:** Tests how the class handles an empty string as an ID.
 
-### Important Tests
-**Adding Items:** Tests ensure that items can be successfully added to the buffer.
-**Removing Items:** Tests verify that items can be removed correctly, following the expected behavior.
-**Handling Empty Buffer:** Tests confirm that the remove() method behaves as expected when the buffer is empty, including waiting behavior and exception handling.
-**Thread Safety:** Multi-threaded tests check the thread safety and synchronization aspects of the buffer, particularly important in a producer-consumer context.
-**FIFO Behavior:** This is crucial as it ensures that items are processed in the order they are added, a fundamental feature for many buffering mechanisms.
-
 # Reflection and Conclusion
+
 
 
 # Test case
