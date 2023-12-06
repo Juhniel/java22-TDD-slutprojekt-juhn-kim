@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BufferTest {
@@ -83,13 +82,6 @@ class BufferTest {
         assertTrue(mockBuffer.getBufferQueue().isEmpty());
     }
 
-//    // Fixa så man kan testa ta bort från empty buffer
-//    @Test
-//    @DisplayName("Test removing an item from an empty buffer")
-//    public void testRemoveFromEmptyBuffer() {
-//        assertEquals(mockItem, mockConsumer.removeItem());
-//    }
-
     @Test
     @DisplayName("Test consuming multiple items from the buffer")
     public void testConsumeMultipleItems() {
@@ -106,20 +98,43 @@ class BufferTest {
                 "All items added to the buffer should have been removed");
     }
 
-//    @Test
-//    @DisplayName("Test consuming multiple items from the buffer")
-//    public void testConsumeMultipleItemsz() {
-//        int numberOfItemsToAdd = 5; // Example number of items
-//        for (int i = 0; i < numberOfItemsToAdd; i++) {
-//            mockProducer.add(new MockItem("item" + i));
-//        }
-//
-//        int numberOfItemsRemoved = 0;
-//        while(mockConsumer.removeItem()) {
-//            numberOfItemsRemoved++;
-//        }
-//
-//        assertEquals(numberOfItemsToAdd, numberOfItemsRemoved,
-//                "All items added to the buffer should have been removed");
-//    }
+    @Test
+    @DisplayName("Test that remove method properly waits and processes items in a producer-consumer scenario")
+    public void testRemoveWithWaiting() throws InterruptedException {
+        final int numberOfItems = 5;
+        Thread producerThread = new Thread(() -> {
+            for (int i = 0; i < numberOfItems; i++) {
+                mockProducer.add(new MockItem("item" + i));
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
+
+        Thread consumerThread = new Thread(() -> {
+            for (int i = 0; i < numberOfItems; i++) {
+                mockConsumer.removeItem();
+            }
+        });
+
+        producerThread.start();
+        consumerThread.start();
+
+        producerThread.join();
+        consumerThread.join();
+
+    }
+
+    @Test
+    @DisplayName("Test that remove method properly handles InterruptedException when interrupted")
+    public void test() {
+        Thread producerThread = new Thread(() ->
+                assertThrows(InterruptedException.class, () ->
+                        mockConsumer.removeItem()));
+        producerThread.start();
+        producerThread.interrupt();
+    }
+
 }
