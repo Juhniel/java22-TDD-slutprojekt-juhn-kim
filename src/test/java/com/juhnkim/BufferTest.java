@@ -117,14 +117,14 @@ class BufferTest {
     }
 
     @Test
-    @DisplayName("Test that remove method properly waits and processes items in a producer-consumer scenario")
+    @DisplayName("Test that remove method properly waits and processes items in a producer-consumer scenario /w notify() and wait()")
     public void testRemoveWithWaiting() {
         final int numberOfItems = 5;
         Thread producerThread = new Thread(() -> {
             for (int i = 0; i < numberOfItems; i++) {
                 mockProducer.add(new MockItem("item" + i));
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
