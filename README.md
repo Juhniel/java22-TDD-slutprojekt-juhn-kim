@@ -19,6 +19,10 @@ A consumer consumes the "item" from the buffer.
 There aren't specific constructor tests for the Buffer class as it mainly involves initializing a
 Queue<Item> without specific parameters. However, the effective functioning of the constructor is
 implicitly tested through the behavior of the add and remove methods from the Producer and Consumer.
+To effectively test this, we utilize the MockProducer and MockConsumer classes. These mock classes are 
+designed to interact with the MockBuffer, which in turn simulates the behavior of the actual Buffer class. 
+By conducting tests that involve adding and removing items through the MockProducer and MockConsumer, 
+we indirectly test the correct initialization and operational integrity of the Buffer's constructor.
 
 **Adding Items:** Tests ensure that items can be successfully added to the buffer.
 
@@ -67,18 +71,13 @@ consumer and the consumer waits for a response. The complexity of ensuring that 
 waits when the buffer is empty and resumes its behavior is of importance in this project. 
 I realized during my first tests that the consumer was stuck waiting for a response that 
 would never occur in the test. There were a lot of things going through my mind here, like 
-creating new threads to be able to interact with one and another.
-
-InterruptedException was another detail that required us to essentially trigger the catch block. To do this
-we could interrupt the actual thread to trigger the InterruptedException.
+creating new threads to be able to interact with one and another. InterruptedException was another detail that required us to essentially trigger the catch block. Triggering
+and capturing the exception required some extra thought. 
 
 Overall it was a great experience to learn about implementing mock classes, understanding Java's multithreading 
 tools and the complexity of testing threads. However, I feel like I have evolved and been able to deepen my knowledge
 in this field for future work. I've also gained some valuable insights during testing, reading and understanding 
 other developers code.
-
-
-
 
 # Test case
 ![slutprojekt_test.png](slutprojekt_test.png)
