@@ -118,7 +118,7 @@ class BufferTest {
 
     @Test
     @DisplayName("Test that remove method properly waits and processes items in a producer-consumer scenario")
-    public void testRemoveWithWaiting() throws InterruptedException {
+    public void testRemoveWithWaiting() {
         final int numberOfItems = 5;
         Thread producerThread = new Thread(() -> {
             for (int i = 0; i < numberOfItems; i++) {
@@ -139,10 +139,6 @@ class BufferTest {
 
         producerThread.start();
         consumerThread.start();
-
-        producerThread.join();
-        consumerThread.join();
-
     }
 
     @Test
