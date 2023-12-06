@@ -99,6 +99,24 @@ class BufferTest {
     }
 
     @Test
+    @DisplayName("Test that the buffer follows FIFO (First-In-First-Out) ordering")
+    public void testBufferFIFOOrdering() {
+        int numberOfItems = 5;
+        MockItem[] itemsAdded = new MockItem[numberOfItems];
+
+        for (int i = 0; i < numberOfItems; i++) {
+            MockItem item = new MockItem("item" + i);
+            itemsAdded[i] = item;
+            mockProducer.add(item);
+        }
+
+        for (int i = 0; i < numberOfItems; i++) {
+            Item removedItem = mockConsumer.removeItem();
+            assertEquals(itemsAdded[i], removedItem, "Items should be removed from the buffer in FIFO order");
+        }
+    }
+
+    @Test
     @DisplayName("Test that remove method properly waits and processes items in a producer-consumer scenario")
     public void testRemoveWithWaiting() throws InterruptedException {
         final int numberOfItems = 5;

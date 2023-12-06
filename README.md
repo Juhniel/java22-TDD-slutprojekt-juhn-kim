@@ -44,6 +44,7 @@ Getters Tests
 **Removing Items:** Tests verify that items can be removed correctly, following the expected behavior.
 **Handling Empty Buffer:** Tests confirm that the remove() method behaves as expected when the buffer is empty, including waiting behavior and exception handling.
 **Thread Safety:** Multi-threaded tests check the thread safety and synchronization aspects of the buffer, particularly important in a producer-consumer context.
+**FIFO Behavior:** This is crucial as it ensures that items are processed in the order they are added, a fundamental feature for many buffering mechanisms.
 
 # Reflection and Conclusion
 
