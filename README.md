@@ -30,10 +30,13 @@ or not after certain operations).
 ### Constructor Tests
 **Handling Different Input Cases:** Ensures the constructor correctly handles various input strings, including null, empty string, upper case, and mixed case, converting them to lowercase as required.
 Getters Tests
+
 **ID Retrieval:** Tests that the getId() method returns the correct, lowercased ID of the item.
-**Important Tests**
+
 **Set ID:** Verifies that the setId() method updates the item's ID correctly and converts it to lowercase.
+
 **Null Handling:** Confirms that the class throws NullPointerException when null is used for the ID, both in the constructor and the setId() method.
+
 **Empty String Handling:** Tests how the class handles an empty string as an ID.
 
 ### Important Tests
