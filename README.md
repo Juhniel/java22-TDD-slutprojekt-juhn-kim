@@ -7,8 +7,11 @@ A consumer consumes the "item" from the buffer.
 
 # Key Features
 * Construction Behavior
-* Prime Number Identification
+* Getter and Setter verification 
 * Exception Handling
+* Null Value testing
+* Mock
+* Helper Mock classes
 
 ## The tests covers the following features of the 'Buffer' class:
 ### Constructor Tests
